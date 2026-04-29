@@ -1,0 +1,21 @@
+# IDE Settings (Deals with the whole folder at once)
+.idea/
+*.iml
+*.iws
+
+# Build files (Covers root and all module build folders)
+build/
+app/build/
+**/build/
+
+# Local machine specific
+local.properties
+.DS_Store
+/captures
+
+# External Native Build
+.externalNativeBuild
+.cxx
+
+# Gradle files
+.gradle/
