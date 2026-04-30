@@ -4,6 +4,7 @@ import android.content.Context
 import coil3.ImageLoader
 import coil3.network.okhttp.OkHttpNetworkFetcherFactory
 import coil3.request.crossfade
+import com.everallity.ecommerceandroidapp.features.cart.data.remote.CartApi
 import com.everallity.ecommerceandroidapp.features.catalog.data.remote.ProductApi
 import dagger.Module
 import dagger.Provides
@@ -45,4 +46,12 @@ object NetworkModule {
     fun provideProductApi(retrofit: Retrofit): ProductApi {
         return retrofit.create(ProductApi::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun provideCartApi(retrofit: Retrofit): CartApi {
+        return retrofit.create(CartApi::class.java)
+    }
+
+
 }
