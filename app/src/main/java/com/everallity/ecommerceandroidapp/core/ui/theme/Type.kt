@@ -1,4 +1,4 @@
-package com.everallity.ecommerceandroidapp.ui.theme
+package com.everallity.ecommerceandroidapp.core.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
