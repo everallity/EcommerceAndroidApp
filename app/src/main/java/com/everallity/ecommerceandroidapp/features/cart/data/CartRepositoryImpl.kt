@@ -1,7 +1,6 @@
 package com.everallity.ecommerceandroidapp.features.cart.data
 
-import android.util.Log
-import com.everallity.ecommerceandroidapp.features.auth.entity.Account
+import com.everallity.ecommerceandroidapp.features.auth.domain.entity.Account
 import com.everallity.ecommerceandroidapp.features.cart.data.mapper.toDomain
 import com.everallity.ecommerceandroidapp.features.cart.data.remote.CartApi
 import com.everallity.ecommerceandroidapp.features.cart.domain.entity.Cart
@@ -19,10 +18,6 @@ class CartRepositoryImpl @Inject constructor(
             try {
                 val cartDto = api.getCart(
                     account.accountId,
-                    account.email,
-                    account.password,
-                    account.type,
-                    account.username
                 )
                 cartDto.toDomain()
             } catch (e: Exception) {

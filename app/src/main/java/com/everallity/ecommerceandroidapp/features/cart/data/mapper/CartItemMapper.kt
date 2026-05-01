@@ -1,6 +1,6 @@
 package com.everallity.ecommerceandroidapp.features.cart.data.mapper
 
-import com.everallity.ecommerceandroidapp.features.cart.data.CartItemDto
+import com.everallity.ecommerceandroidapp.features.cart.data.dto.CartItemDto
 import com.everallity.ecommerceandroidapp.features.cart.domain.entity.CartItem
 import com.everallity.ecommerceandroidapp.features.catalog.data.mapper.toDomain
 

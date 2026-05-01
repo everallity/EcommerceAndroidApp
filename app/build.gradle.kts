@@ -67,4 +67,5 @@ dependencies {
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.0-rc01")
     implementation("io.coil-kt.coil3:coil-android:3.0.0-rc01")
     implementation("androidx.compose.material:material-icons-extended")
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
 }

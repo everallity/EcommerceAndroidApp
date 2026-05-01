@@ -1,5 +1,7 @@
-package com.everallity.ecommerceandroidapp.core.network
+package com.everallity.ecommerceandroidapp.core.data
 
+import com.everallity.ecommerceandroidapp.features.auth.data.AuthenticationRepositoryImpl
+import com.everallity.ecommerceandroidapp.features.auth.domain.repository.AuthenticationRepository
 import com.everallity.ecommerceandroidapp.features.cart.data.CartRepositoryImpl
 import com.everallity.ecommerceandroidapp.features.cart.domain.repository.CartRepository
 import com.everallity.ecommerceandroidapp.features.catalog.data.ProductRepositoryImpl
@@ -24,4 +26,10 @@ abstract class DataModule {
     abstract fun bindCartRepository(
         cartRepositoryImpl: CartRepositoryImpl
     ): CartRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindAuthRepository(
+        authenticationRepositoryImpl: AuthenticationRepositoryImpl
+    ): AuthenticationRepository
 }

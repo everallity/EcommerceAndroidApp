@@ -1,6 +1,6 @@
 package com.everallity.ecommerceandroidapp.features.cart.domain.repository
 
-import com.everallity.ecommerceandroidapp.features.auth.entity.Account
+import com.everallity.ecommerceandroidapp.features.auth.domain.entity.Account
 import com.everallity.ecommerceandroidapp.features.cart.domain.entity.Cart
 import com.everallity.ecommerceandroidapp.features.cart.domain.entity.CartItem
 

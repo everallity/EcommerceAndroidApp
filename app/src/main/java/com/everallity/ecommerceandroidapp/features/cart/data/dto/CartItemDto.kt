@@ -1,4 +1,4 @@
-package com.everallity.ecommerceandroidapp.features.cart.data
+package com.everallity.ecommerceandroidapp.features.cart.data.dto
 
 import com.everallity.ecommerceandroidapp.features.catalog.data.ProductDto
 import com.google.gson.annotations.SerializedName

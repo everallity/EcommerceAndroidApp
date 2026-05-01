@@ -1,6 +1,6 @@
 package com.everallity.ecommerceandroidapp.features.cart.data.remote
 
-import com.everallity.ecommerceandroidapp.features.cart.data.CartDto
+import com.everallity.ecommerceandroidapp.features.cart.data.dto.CartDto
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.Multipart
@@ -18,11 +18,7 @@ interface CartApi {
     @Multipart
     @POST("cart/getcartofclient")
     suspend fun getCart(
-        @Part("id") accountId: Int,
-        @Part("email") email: String,
-        @Part("password") password: String,
-        @Part("type") type: String,
-        @Part("username") username: String
+        @Part("id") accountId: Long,
     ): CartDto
 
     @Multipart
