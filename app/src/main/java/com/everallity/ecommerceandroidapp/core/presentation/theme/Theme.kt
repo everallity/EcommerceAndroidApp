@@ -1,4 +1,4 @@
-package com.everallity.ecommerceandroidapp.core.ui.theme
+package com.everallity.ecommerceandroidapp.core.presentation.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

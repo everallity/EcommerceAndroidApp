@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.everallity.ecommerceandroidapp.core.ui.theme.EcommerceAndroidAppTheme
+import com.everallity.ecommerceandroidapp.core.presentation.theme.EcommerceAndroidAppTheme
 import com.everallity.ecommerceandroidapp.features.catalog.domain.Product
 
 @Composable
@@ -26,7 +26,10 @@ fun ProductGridList(
             .background(Color(0xFFF5F5F5)),
         contentPadding = PaddingValues(10.dp)
     ) {
-        items(products) { product ->
+        items(
+            products,
+            key = {it.id}
+        ) { product ->
             ProductItemCard(
                 product = product,
                 onProductClick = { onProductClick(product.id) }

@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.everallity.ecommerceandroidapp.R
-import com.everallity.ecommerceandroidapp.core.ui.theme.EcommerceAndroidAppTheme
+import com.everallity.ecommerceandroidapp.core.presentation.theme.EcommerceAndroidAppTheme
 
 @Composable
 fun LoginScreen(
@@ -42,8 +42,13 @@ fun LoginScreen(
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
 
-    LaunchedEffect(state.isLoginSuccess) {
-        if (state.isLoginSuccess) onNavigateToHome()
+    LaunchedEffect(Unit) {
+        viewModel.authEvent.collect { event ->
+            when(event) {
+                is AuthEvent.NavigateToHome -> onNavigateToHome()
+                else -> {}
+            }
+        }
     }
 
     LoginContent(
@@ -70,7 +75,7 @@ fun LoginContent(
             painter = painterResource(id = R.drawable.bg),
             contentDescription = null,
             modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.FillWidth
+            contentScale = ContentScale.FillBounds
         )
 
         Box(
@@ -126,17 +131,21 @@ fun LoginContent(
 
             Button(
                 onClick = onLoginClick,
-                enabled = !state.isLoading,
+                enabled = !state.isSigningIn,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                if (state.isLoading) CircularProgressIndicator(Modifier.size(20.dp))
+                if (state.isSigningIn) CircularProgressIndicator(Modifier.size(20.dp))
                 else Text("Login")
             }
 
             Button(
                 onClick = onSignupClick,
-                enabled = !s
-            ) { }
+                enabled = !state.isSigningUp,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                if (state.isSigningUp) CircularProgressIndicator(Modifier.size(20.dp))
+                else Text("Sign up")
+            }
         }
     }
 }
@@ -154,7 +163,7 @@ fun LoginScreenPreview() {
             LoginContent(
                 state = AuthUiState(
                     email = "user@example.com",
-                    isLoading = false,
+                    isSigningIn = false,
                     error = "Error"
                 ),
                 onEmailChanged = {},

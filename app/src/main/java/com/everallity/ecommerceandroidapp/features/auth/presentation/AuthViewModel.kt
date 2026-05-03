@@ -33,25 +33,35 @@ class AuthViewModel @Inject constructor(
     }
 
     fun onLoginClick() {
-        _uiState.update { it.copy(isLoading = true, error = null) }
+        _uiState.update { it.copy(isSigningIn = true, error = null) }
         val currentState = uiState.value
         val email = currentState.email
         val password = currentState.password
         viewModelScope.launch {
             val result = loginUseCase(email, password)
             result.onSuccess {
-                _uiState.update { it.copy(isLoading = false) }
+                _uiState.update { it.copy(isSigningIn = false) }
                 _authEvent.emit(AuthEvent.NavigateToHome)
             }.onFailure { throwable ->
                 val message = throwable.message ?: "Something went wrong"
-                _uiState.update { it.copy(isLoading = false, error = message) }
+                _uiState.update { it.copy(isSigningIn = false, error = message) }
             }
         }
     }
 
     fun onSignupClick() {
+        _uiState.update { it.copy(isSigningUp = true, error = null) }
+        val currentState = uiState.value
+        val email = currentState.email
+        val password = currentState.password
         viewModelScope.launch {
-
+            val result = signupUseCase(email, password)
+            result.onSuccess {
+                _uiState.update { it.copy(isSigningUp = false, error = null) }
+                _authEvent.emit(AuthEvent.ShowToast("Sign up success"))
+            }.onFailure { throwable ->
+                _uiState.update { it.copy(isSigningUp = false, error = throwable.message) }
+            }
         }
     }
 }

@@ -17,34 +17,29 @@ import com.everallity.ecommerceandroidapp.features.catalog.presentation.componen
 
 @Composable
 fun CatalogScreen(
+    modifier: Modifier = Modifier,
     viewModel: CatalogViewModel = hiltViewModel(),
     onProductClick: (Int) -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    Scaffold(
-        topBar = {}
-    ) { padding ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-        ) {
-            when {
-                state.isLoading -> {
-                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-                }
+    Box(
+        modifier = modifier.fillMaxSize()
+    ) {
+        when {
+            state.isLoading -> {
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+            }
 
-                state.error != null -> {
-                    Text(
-                        text = state.error!!,
-                        color = Color.Red,
-                        modifier = Modifier.align(Alignment.Center)
-                    )
-                }
+            state.error != null -> {
+                Text(
+                    text = state.error!!,
+                    color = Color.Red,
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
 
-                else -> {
-                    ProductGridList(products = state.productList, onProductClick)
-                }
+            else -> {
+                ProductGridList(products = state.productList, onProductClick)
             }
         }
     }
