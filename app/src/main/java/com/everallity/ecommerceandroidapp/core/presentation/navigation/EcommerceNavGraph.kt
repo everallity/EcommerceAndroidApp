@@ -8,7 +8,7 @@ import com.everallity.ecommerceandroidapp.features.auth.presentation.LoginScreen
 import com.everallity.ecommerceandroidapp.features.catalog.presentation.CatalogScreen
 
 @Composable
-fun EcommerceNavGraph(navController: NavHostController) {
+fun EcommerceNavGraph(navController: NavHostController, startDestination: String) {
 
     NavHost(navController = navController, startDestination = "login_screen") {
         composable("catalog_screen") {

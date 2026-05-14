@@ -17,7 +17,6 @@ class TokenManager @Inject constructor(
     private val datastore: DataStore<Preferences>
 ) {
     private val TOKEN_KEY = stringPreferencesKey("jwt_token")
-
     suspend fun saveToken(token: String) {
         datastore.edit { preferences -> preferences[TOKEN_KEY] = token }
     }

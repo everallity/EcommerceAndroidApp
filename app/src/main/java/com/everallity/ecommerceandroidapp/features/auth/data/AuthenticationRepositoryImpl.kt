@@ -30,7 +30,7 @@ class AuthenticationRepositoryImpl @Inject constructor(
             try {
                 val request = AuthenticationRequestDto(email, password)
                 val response = api.login(request)
-                if (response.success && response.data != null ) {
+                if (response.success && response.data != null) {
                     tokenManager.saveToken(response.data.token)
                     Result.success(
                         AuthToken(
@@ -40,7 +40,6 @@ class AuthenticationRepositoryImpl @Inject constructor(
                         )
                     )
                 } else {
-                    Log.e("duc","${response.message}")
                     Result.failure(Exception(response.message))
                 }
             } catch (e: Exception) {
@@ -59,11 +58,13 @@ class AuthenticationRepositoryImpl @Inject constructor(
                 val response = api.signup(request)
                 if (response.success && response.data != null) {
                     val data = response.data
-                    Result.success(AuthToken(
-                        data.token,
-                        data.email,
-                        data.roles
-                    ))
+                    Result.success(
+                        AuthToken(
+                            data.token,
+                            data.email,
+                            data.roles
+                        )
+                    )
                 } else {
                     Result.failure(Exception(response.message))
                 }
